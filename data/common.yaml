@@ -1,0 +1,30 @@
+---
+# OS agnostic configuration goes in here
+
+# Class definition
+classes:
+  - epel
+  - clamav
+  - ntp
+  - docker
+  - git
+  - sdes
+
+# ClamAV config parameters
+# These don't appear to work with Puppet4/Hiera3 will revisit in time
+
+# NTP config params
+ntp::restrict:
+  - default nomodify notrap nopeer noquery
+ntp::autoupdate: false
+ntp::enable: true
+ntp::servers:
+  - 0.us.pool.ntp.org iburst
+  - 1.us.pool.ntp.org iburst
+  - 2.us.pool.ntp.org iburst
+  - 3.us.pool.ntp.org iburst
+
+# Git config (awaiting a Git user/pw)
+git::configs:
+  user.name: 'test'
+  user.email: 'test@example.com'

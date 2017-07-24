@@ -1,0 +1,10 @@
+---
+# Configuration for the Bastion server
+
+# Packages
+classes:
+  - ssh
+  - git
+
+
+
