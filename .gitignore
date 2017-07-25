@@ -1,0 +1,8 @@
+# IntelliJ project files
+*.iml
+out
+gen
+.idea/
+
+# Vagrant working dir
+.vagrant/
