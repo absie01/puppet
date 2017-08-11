@@ -6,11 +6,11 @@ forge "https://forgeapi.puppetlabs.com"
 # Modules from Puppet Forge
 mod 'puppetlabs-stdlib', '4.16.0'
 mod 'puppetlabs-rabbitmq', '5.6.0'
+mod 'garethr-erlang', '0.3.0'
 mod 'arioch-redis','1.2.4'
 mod 'stahnma-epel', '1.2.2'
 mod 'puppetlabs-java', '1.6.0'
 mod 'puppetlabs-git', '0.5.0'
-mod 'rtyler-jenkins', '1.7.0'
 #mod 'garethr-docker', '5.3.0'
 mod 'puppetlabs-docker_platform', '2.2.1'
 mod 'puppetlabs-mongodb', '0.17.0'

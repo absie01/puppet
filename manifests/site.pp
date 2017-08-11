@@ -13,25 +13,37 @@ node default {
   include ::mongodb::client
 }
 
-node 'bastion.domain.tld' {
+node 'bastion' {
   Yumrepo <| |> -> Package <| provider != 'rpm' |>
   include sdes::roles::base
 }
 
-# Packages for the CI server(s)
-node 'ci01.domain.tld' {
+node 'rabbit-1' {
   Yumrepo <| |> -> Package <| provider != 'rpm' |>
-  include ::clamav
   include ::epel
-  include ::git
-  include ::jenkins::master
+  include ::rabbitmq
+
+  class {'::rabbitmq':
+    config_cluster => true,
+    cluster_nodes => ['rabbit1', 'rabbit2'],
+    cluster_node_type => ram,
+    erlang_cookie => 'SECRET',
+    cluster_partition_handling => pause_minority,
+    wipe_db_on_cookie_change => true,
+  }
 }
 
-# Packages for application servers
-node 'app01.domain.tld' {
+node 'rabbit-2' {
   Yumrepo <| |> -> Package <| provider != 'rpm' |>
   include ::epel
-  include ::git
-  include ::java
-  include ::clamav
+  include ::rabbitmq
+
+  class {'::rabbitmq':
+    config_cluster => true,
+    cluster_nodes => ['rabbit1', 'rabbit2'],
+    cluster_node_type => ram,
+    erlang_cookie => 'SECRET',
+    cluster_partition_handling => pause_minority,
+    wipe_db_on_cookie_change => true,
+  }
 }

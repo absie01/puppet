@@ -6,3 +6,8 @@ gen
 
 # Vagrant working dir
 .vagrant/
+
+# Puppet
+Puppetfile.lock
+.librarian/
+.tmp/
