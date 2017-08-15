@@ -47,3 +47,15 @@ node 'rabbit-2' {
     wipe_db_on_cookie_change => true,
   }
 }
+
+node 'mongodb_server_1', 'mongodb_server_2', 'mongodb_server_3' {
+  class {'::mongodb::globals':
+    manage_package_repo => true,
+  }->
+  class {'::mongodb::client': } ->
+  class {'::mongodb::server':
+    replset => true,
+    replset_config => {'rsmain'=> {ensure => present, members => ['mongodb_server_1:27017', 'mongodb_server_2:27017',
+      'mongodb_server_3:27017']}}
+  }
+}
