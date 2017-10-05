@@ -17,6 +17,8 @@ mod 'puppetlabs-mongodb', '0.17.0'
 mod 'edestecd-clamav', '1.0.0'
 mod 'puppetlabs-ntp', '6.2.0'
 mod 'ghoneycutt-ssh', '3.51.0'
+mod 'sensu-sensu', '2.35.0'
+mod 'pcfens-filebeat', '2.1.0'
 
 # A module from git
 # mod 'puppetlabs-ntp',

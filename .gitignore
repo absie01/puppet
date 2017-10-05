@@ -11,3 +11,4 @@ gen
 Puppetfile.lock
 .librarian/
 .tmp/
+.DS_Store
