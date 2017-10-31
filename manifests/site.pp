@@ -3,9 +3,16 @@
 
 node default {
   Yumrepo <| |> -> Package <| provider != 'rpm' |> #Prioritise resources of type Yumrepo (install these first)
-  include ::epel
-  include ::java
-  include ::docker
+
+  class sdes_repo {
+
+    yumrepo { 'sdes_repo':
+      enabled => 1,
+      baseurl => 'http://10.176.64.11:8097/artifactory/',
+      descr => 'HMRC CDG provided artifactory repo',
+      gpgcheck => 0,
+    }
+  }
 
   class { 'sensu':
     rabbitmq_password => 'somethingsecure',
@@ -54,5 +61,8 @@ node 'sensu_server' {
     api => true,
   }
 
-  sensu_handler
+  sensu::handler {'default':
+    command => 'mail -s \'Sensu Alert\' ops@hmrc',
+  }
+
 }

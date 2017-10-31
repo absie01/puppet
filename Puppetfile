@@ -5,6 +5,7 @@ forge "https://forgeapi.puppetlabs.com"
 
 # Modules from Puppet Forge
 mod 'puppetlabs-stdlib', '4.16.0'
+mod 'puppet-yum', '2.0.2'
 mod 'puppetlabs-rabbitmq', '5.6.0'
 mod 'garethr-erlang', '0.3.0'
 mod 'arioch-redis','1.2.4'
