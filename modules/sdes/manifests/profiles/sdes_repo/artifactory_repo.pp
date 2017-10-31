@@ -6,5 +6,4 @@ class sdes::profiles::sdes_repo::artifactory_repo {
       descr => 'HMRC CDG provided artifactory repo',
       gpgcheck => 0,
     }
-
 }
